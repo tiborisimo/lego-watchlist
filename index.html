@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="sk"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>LEGO Watchlist</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f4f4f8;color:#222}
+#login{display:flex;align-items:center;justify-content:center;min-height:100vh}
+.box{background:white;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.1);padding:40px;width:100%;max-width:360px}
+.box h1{font-size:1.3rem;color:#e3000b;margin-bottom:8px}
+.box p{font-size:.85rem;color:#888;margin-bottom:24px}
+.box input[type=password]{width:100%;padding:12px;border:1px solid #ddd;border-radius:8px;font-size:1rem;margin-bottom:12px}
+.box button{width:100%;padding:12px;background:#e3000b;color:white;border:none;border-radius:8px;font-size:1rem;cursor:pointer;font-weight:600}
+.box button:hover{background:#b80009}
+.error{color:#e3000b;font-size:.85rem;margin-bottom:12px;display:none}
+#content{display:none}
+header{background:#e3000b;color:white;padding:20px 24px;display:flex;align-items:center;gap:16px}
+header h1{font-size:1.4rem}
+.stats{margin-left:auto;font-size:.9rem;opacity:.9;text-align:right}
+.updated{font-size:.75rem;opacity:.75}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;padding:24px;max-width:1400px;margin:0 auto}
+.card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.08);position:relative;transition:transform .15s}
+.card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.12)}
+.card-deal{border:2px solid #2a9d8f}
+.deal-badge{position:absolute;top:10px;right:10px;background:#2a9d8f;color:white;font-size:.75rem;font-weight:700;padding:4px 10px;border-radius:20px;z-index:1}
+.card-img-wrap{background:#f8f8f8;height:180px;display:flex;align-items:center;justify-content:center;padding:12px}
+.card-img-wrap img{max-height:100%;max-width:100%;object-fit:contain}
+.card-body{padding:14px}
+.set-num{font-size:.72rem;color:#888;margin-bottom:2px}
+.set-name{font-size:.95rem;font-weight:600;margin-bottom:4px;line-height:1.3}
+.set-meta{font-size:.75rem;color:#999;margin-bottom:10px}
+.prices{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+.retail{font-size:.8rem;color:#aaa;text-decoration:line-through}
+.price-deal{font-size:1.2rem;font-weight:700;color:#2a9d8f}
+.price-normal{font-size:1.1rem;font-weight:600;color:#333}
+.price-na{font-size:.9rem;color:#bbb}
+.target{font-size:.72rem;color:#aaa;margin-bottom:6px}
+.shop{font-size:.78rem;color:#555;margin-bottom:10px}
+.btn{display:block;text-align:center;background:#e3000b;color:white;text-decoration:none;padding:8px;border-radius:6px;font-size:.8rem;font-weight:500;margin-top:10px}
+.btn:hover{background:#b80009}
+.logout{position:fixed;bottom:16px;right:16px;background:#333;color:white;text-decoration:none;padding:8px 16px;border-radius:20px;font-size:.8rem;cursor:pointer;opacity:.7;border:none}
+</style></head><body>
+<div id="login"><div class="box">
+<h1>LEGO Watchlist</h1><p>Zadaj heslo</p>
+<div class="error" id="err">Nespravne heslo</div>
+<form onsubmit="return checkPass()">
+<input type="password" id="pwd" placeholder="Heslo" autofocus>
+<button type="submit">Prihlasit</button>
+</form></div></div>
+<div id="content">
+<header><div><h1>LEGO Watchlist</h1></div>
+<div class="stats"><div>4 dealy z 8 setov</div>
+<div class="updated">Aktualizovane: 5/7/2026, 4:58:40 PM</div></div></header>
+<div class="grid"><div class="card card-deal"><div class="deal-badge">DEAL 20.7%</div><div class="card-img-wrap"><img src="https://www.briky.cz/storage/sets/10326/images/1.jpg" alt="Natural History Museum" loading="lazy"></div><div class="card-body"><div class="set-num">#10326</div><div class="set-name">Natural History Museum</div><div class="set-meta">Icons · do 01.12.2026</div><div class="prices"><span class="retail">299.99 €</span><span class="price-deal">238.01 €</span></div><div class="target">cieľ: 239.99 €</div><div class="shop">museumofbricks.sk</div><a href="https://www.briky.sk/lego/10326/zobrazit" target="_blank" class="btn">briky.sk</a></div></div><div class="card card-deal"><div class="deal-badge">DEAL 25.3%</div><div class="card-img-wrap"><img src="https://www.briky.cz/storage/sets/10334/images/1.jpg" alt="Retro Radio" loading="lazy"></div><div class="card-body"><div class="set-num">#10334</div><div class="set-name">Retro Radio</div><div class="set-meta">Icons · do 01.07.2026</div><div class="prices"><span class="retail">99.99 €</span><span class="price-deal">74.74 €</span></div><div class="target">cieľ: 79.99 €</div><div class="shop">museumofbricks.sk</div><a href="https://www.briky.sk/lego/10334/zobrazit" target="_blank" class="btn">briky.sk</a></div></div><div class="card card-deal"><div class="deal-badge">DEAL 22.1%</div><div class="card-img-wrap"><img src="https://www.briky.cz/storage/sets/10340/images/1.jpg" alt="Wreath" loading="lazy"></div><div class="card-body"><div class="set-num">#10340</div><div class="set-name">Wreath</div><div class="set-meta">Icons · do 01.12.2026</div><div class="prices"><span class="retail">99.99 €</span><span class="price-deal">77.85 €</span></div><div class="target">cieľ: 79.99 €</div><div class="shop">museumofbricks.sk</div><a href="https://www.briky.sk/lego/10340/zobrazit" target="_blank" class="btn">briky.sk</a></div></div><div class="card card-deal"><div class="deal-badge">DEAL 23.5%</div><div class="card-img-wrap"><img src="https://www.briky.cz/storage/sets/10341/images/1.jpg" alt="NASA Artemis Space Launch System" loading="lazy"></div><div class="card-body"><div class="set-num">#10341</div><div class="set-name">NASA Artemis Space Launch System</div><div class="set-meta">Icons · do 01.12.2026</div><div class="prices"><span class="retail">259.99 €</span><span class="price-deal">198.87 €</span></div><div class="target">cieľ: 207.99 €</div><div class="shop">museumofbricks.sk</div><a href="https://www.briky.sk/lego/10341/zobrazit" target="_blank" class="btn">briky.sk</a></div></div><div class="card "><div class="card-img-wrap"><img src="https://www.briky.cz/storage/sets/10307/images/1.jpg" alt="Eiffel Tower" loading="lazy"></div><div class="card-body"><div class="set-num">#10307</div><div class="set-name">Eiffel Tower</div><div class="set-meta">Icons · do 01.07.2026</div><div class="prices"><span class="retail">629.99 €</span><span class="price-normal">649.99 €</span></div><div class="target">cieľ: 503.99 €</div><div class="shop">lego.sk</div><a href="https://www.briky.sk/lego/10307/zobrazit" target="_blank" class="btn">briky.sk</a></div></div><div class="card "><div class="card-img-wrap"><img src="https://www.briky.cz/storage/sets/10323/images/1.jpg" alt="PAC-MAN Arcade Machine" loading="lazy"></div><div class="card-body"><div class="set-num">#10323</div><div class="set-name">PAC-MAN Arcade Machine</div><div class="set-meta">Icons · do 01.07.2026</div><div class="prices"><span class="retail">269.99 €</span><span class="price-normal">238.94 €</span></div><div class="target">cieľ: 215.99 €</div><div class="shop">allegro.sk</div><a href="https://www.briky.sk/lego/10323/zobrazit" target="_blank" class="btn">briky.sk</a></div></div><div class="card "><div class="card-img-wrap"><img src="https://www.briky.cz/storage/sets/10335/images/1.jpg" alt="The Endurance" loading="lazy"></div><div class="card-body"><div class="set-num">#10335</div><div class="set-name">The Endurance</div><div class="set-meta">Icons · do 01.12.2026</div><div class="prices"><span class="retail">269.99 €</span><span class="price-normal">279.99 €</span></div><div class="target">cieľ: 215.99 €</div><div class="shop">lego.sk</div><a href="https://www.briky.sk/lego/10335/zobrazit" target="_blank" class="btn">briky.sk</a></div></div><div class="card "><div class="card-img-wrap"><img src="https://www.briky.cz/storage/sets/10337/images/1.jpg" alt="Lamborghini Countach 5000 Quattrovalvole" loading="lazy"></div><div class="card-body"><div class="set-num">#10337</div><div class="set-name">Lamborghini Countach 5000 Quattrovalvole</div><div class="set-meta">Icons · do 01.12.2026</div><div class="prices"><span class="retail">179.99 €</span><span class="price-normal">154.99 €</span></div><div class="target">cieľ: 143.99 €</div><div class="shop">allegro.sk</div><a href="https://www.briky.sk/lego/10337/zobrazit" target="_blank" class="btn">briky.sk</a></div></div></div>
+<button class="logout" onclick="sessionStorage.removeItem('lego');location.reload()">Odhlasit</button>
+</div>
+<script>
+var H="aa30c09351866d917086c5daf2c9985302895bd2482b3650f532ded09c7c27dc";
+async function sha256(s){var e=new TextEncoder().encode(s);var h=await crypto.subtle.digest("SHA-256",e);return Array.from(new Uint8Array(h)).map(function(b){return b.toString(16).padStart(2,"0")}).join("");}
+async function checkPass(){var p=document.getElementById("pwd").value;var h=await sha256(p);if(h===H){sessionStorage.setItem("lego","1");show();}else{document.getElementById("err").style.display="block";}return false;}
+function show(){document.getElementById("login").style.display="none";document.getElementById("content").style.display="block";}
+if(sessionStorage.getItem("lego")==="1")show();
+</script></body></html>
